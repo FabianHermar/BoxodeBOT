@@ -1,7 +1,8 @@
 /* eslint-disable */
 
-import { Client, Events } from 'discord.js'
-import 'dotenv/config'
+import { Client, Events } from 'discord.js';
+import 'dotenv/config';
+import { createServer } from 'http';
 
 const client = new Client( {
   intents: 3276799
@@ -10,6 +11,18 @@ const client = new Client( {
 // Cuando el cliente esté listo, ejecuta este código
 client.on( Events.ClientReady, async () => {
   console.log( `Logged in as ${client.user.username}!` )
+
+  // Configurar el estado y actividad personalizados
+  client.user.setPresence( {
+    status: 'online',
+    activities: [ {
+      name: 'Managing the server 👷‍♂️',
+      type: 'PLAYING'
+    } ]
+  } );
+
+  client.user.setActivity( "my code", { type: "STREAMING", url: "https://www.twitch.tv/an_idiots_guide" } )
+
 } )
 
 // Responder a los mensajes
@@ -31,3 +44,8 @@ client.on( Events.MessageCreate, async ( message ) => {
 
 // Iniciar sesión en Discord con el token del cliente
 client.login( process.env.DISCORD_TOKEN )
+
+// Esto es solo para Render, no afecta el funcionamiento del bot
+const PORT = process.env.PORT || 3000;
+
+createServer( ( req, res ) => res.end( 'Bot is running!' ) ).listen( PORT );
