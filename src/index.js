@@ -21,7 +21,7 @@ client.on( Events.ClientReady, async () => {
     } ]
   } );
 
-  client.user.setActivity( "my code", { type: "STREAMING", url: "https://www.twitch.tv/an_idiots_guide" } )
+  client.user.setActivity( "my code", { type: "STREAMING", url: "https://www.twitch.tv/fabianhmz" } )
 
 } )
 
