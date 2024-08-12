@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "space-in-parens": [
+      "error",
+      "never"
+    ]
+  }
+}
